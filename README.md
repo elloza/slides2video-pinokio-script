@@ -1,2 +1,4 @@
-# slides2video-pinokio-script
-Pinokio script for installing the app slides2video
+# Slides2Video
+
+A pinokio script for https://github.com/elloza/slides2video-pinokio
+
