@@ -1,13 +1,7 @@
 module.exports = {
   run: [
-    // Paso 1: Instala LibreOffice según el sistema operativo
-    {
-      method: "script.run",
-      params: {
-        uri: "installLibreoffice.js"
-      }
-    },
-    // Paso 2: Clonar repositorio
+    // (Paso de instalación de LibreOffice removido)
+    // Paso 1: Clonar repositorio
     {
       method: "shell.run",
       params: {
@@ -16,7 +10,7 @@ module.exports = {
         ]
       }
     },
-    // Paso 3: Iniciar torch (si se utiliza)
+    // Paso 2: Iniciar torch (si se utiliza)
     {
       method: "script.start",
       params: {
@@ -27,7 +21,7 @@ module.exports = {
         }
       }
     },
-    // Paso 4: Instalar dependencias de la aplicación
+    // Paso 3: Instalar dependencias de la aplicación
     {
       method: "shell.run",
       params: {
@@ -40,7 +34,7 @@ module.exports = {
         ]
       }
     },
-    // Paso 5: Enlazar el entorno virtual
+    // Paso 4: Enlazar el entorno virtual
     {
       method: "fs.link",
       params: {
