@@ -3,4 +3,4 @@
 A pinokio script for https://github.com/elloza/slides2video-pinokio
 
 ![Visits](https://komarev.com/ghpvc/?username=elloza&repo=slides2video-pinokio-script&color=blue&style=flat)
-![Visitor Badge](https://visitorbadge.io/status?path=elloza/slides2video-pinokio-script&label=Visitantes&countColor=%23263759&style=flat)
+[![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Felloza%2Fslides2video-pinokio-script&label=VISITORS&countColor=%23697689)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Felloza%2Fslides2video-pinokio-script)
