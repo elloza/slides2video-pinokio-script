@@ -40,6 +40,7 @@ module.exports = {
         venv: "env",
         path: "app",
         message: [
+          "uv pip install git+https://github.com/elloza/pptx2pdfwasm.git",
           "playwright install",
         ]
       }
