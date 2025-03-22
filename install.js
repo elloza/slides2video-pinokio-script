@@ -34,6 +34,16 @@ module.exports = {
         ]
       }
     },
+    {
+      method: "shell.run",
+      params: {
+        venv: "env",
+        path: "app",
+        message: [
+          "playwright install",
+        ]
+      }
+    },
     // Paso 4: Enlazar el entorno virtual
     {
       method: "fs.link",
