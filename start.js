@@ -1,35 +1,45 @@
+// start.js
 module.exports = {
   daemon: true,
   run: [
+    /* 1 · Crea (si no existe) y abastece el entorno ----------- */
     {
       method: "shell.run",
       params: {
-        venv: "slides2video",                // Edit this to customize the venv folder path
-        env: { },                   // Edit this to customize environment variables (see documentation)
-        path: "app",                // Edit this to customize the path to start the shell from
+        venv: "slides2video",          // ➜  La carpeta del venv
+        path: "app",          // ➜  Ejecuta todo desde /app
         message: [
-          "python -m streamlit run app.py --server.headless true", // Prevenir que se abra el navegador
+          // A) Garantiza que exista el venv
+          "python -m venv env || echo venv listo",
+          // B) Actualiza pip
+          "python -m pip install --upgrade pip",
+          // C) Instala dependencias; si no hay requirements.txt, instala Streamlit “pelado”
+          "if exist requirements.txt (pip install -r requirements.txt) else (pip install streamlit)"
         ],
-        on: [{
-          // The regular expression pattern to monitor.
-          // When this pattern occurs in the shell terminal, the shell will return,
-          // and the script will go onto the next step.
-          "event": "/http:\/\/\\S+/",   
-
-          // "done": true will move to the next step while keeping the shell alive.
-          // "kill": true will move to the next step after killing the shell.
-          "done": true
-        }]
+        /* Espera a ver la palabra “Successfully installed” o “Requirement already satisfied”
+           antes de pasar al siguiente paso */
+        on: [{ event: /(Successfully installed|Requirement already satisfied)/, done: true }]
       }
     },
+
+    /* 2 · Arranca Streamlit dentro del mismo venv -------------- */
     {
-      // This step sets the local variable 'url'.
-      // This local variable will be used in pinokio.js to display the "Open WebUI" tab when the value is set.
-      method: "local.set",
+      method: "shell.run",
       params: {
-        // the input.event is the regular expression match object from the previous step
-        url: "{{input.event[0]}}"
+        venv: "slides2video",
+        path: "app",
+        message: [
+          // Usamos SIEMPRE el python del venv ─ así evitamos que Windows busque streamlit.exe
+          "python -m streamlit run app.py --server.headless true"
+        ],
+        on: [{ event: /http:\/\/\S+/, done: true }]
       }
+    },
+
+    /* 3 · Expone la URL en la UI de Pinokio -------------------- */
+    {
+      method: "local.set",
+      params: { url: "{{input.event[0]}}" }
     }
   ]
-}
+};
