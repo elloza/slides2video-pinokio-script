@@ -40,7 +40,7 @@ module.exports = {
         venv: "slides2video",
         path: "app",
         message: [
-          "uv pip install -r requirements.txt"
+          "pip install -r requirements.txt"
         ]
       }
     },
