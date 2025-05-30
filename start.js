@@ -4,11 +4,11 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        venv: "env",                // Edit this to customize the venv folder path
+        venv: "slides2video",                // Edit this to customize the venv folder path
         env: { },                   // Edit this to customize environment variables (see documentation)
         path: "app",                // Edit this to customize the path to start the shell from
         message: [
-          "streamlit run app.py --server.headless true", // Prevenir que se abra el navegador
+          "python -m streamlit run app.py --server.headless true", // Prevenir que se abra el navegador
         ],
         on: [{
           // The regular expression pattern to monitor.

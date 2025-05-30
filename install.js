@@ -16,7 +16,7 @@ module.exports = {
       params: {
         uri: "torch.js",
         params: {
-          venv: "env",
+          venv: "slides2video",
           path: "app"
         }
       }
@@ -25,7 +25,7 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        venv: "env",
+        venv: "slides2video",
         path: "app",
         message: [
           "uv pip install gradio devicetorch",
@@ -37,7 +37,17 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        venv: "env",
+        venv: "slides2video",
+        path: "app",
+        message: [
+          "uv pip install -r requirements.txt"
+        ]
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        venv: "slides2video",
         path: "app",
         message: [
           "uv pip install git+https://github.com/elloza/pptx2pdfwasm.git",
@@ -49,7 +59,7 @@ module.exports = {
     {
       method: "fs.link",
       params: {
-        venv: "app/env"
+        venv: "app/slides2video"
       }
     }
   ]
