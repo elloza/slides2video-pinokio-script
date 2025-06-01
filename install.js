@@ -28,19 +28,7 @@ module.exports = {
         venv: "slides2video",
         path: "app",
         message: [
-          "uv pip install gradio devicetorch",
-          "uv pip install -r requirements.txt",
-          "uv pip install transformers"
-        ]
-      }
-    },
-    {
-      method: "shell.run",
-      params: {
-        venv: "slides2video",
-        path: "app",
-        message: [
-          "pip install -r requirements.txt"
+          "uv pip install -r requirements.txt"
         ]
       }
     },
